@@ -15,9 +15,9 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var datePickerTxt: UITextField!
     
     let datePicker = UIDatePicker()
+    // URL
     let URL_USER_REGISTER = "http://ksssq.online/v1/register.php";
-    
-    
+
     func createDatePicker() {
         
         datePicker.datePickerMode = .date
