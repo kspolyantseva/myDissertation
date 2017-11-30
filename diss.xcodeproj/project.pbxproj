@@ -18,7 +18,7 @@
 		50433BB71FA43F540017081A /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 50433BB31FA43F540017081A /* profile.png */; };
 		50433BB81FA43F540017081A /* stat.png in Resources */ = {isa = PBXBuildFile; fileRef = 50433BB41FA43F540017081A /* stat.png */; };
 		506D4FED1FD0CC13008F473B /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D4FEC1FD0CC13008F473B /* TrackViewController.swift */; };
-		506D4FF11FD0CDDA008F473B /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D4FF01FD0CDDA008F473B /* StatViewController.swift */; };
+		506D4FF31FD0D097008F473B /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D4FF21FD0D097008F473B /* StatViewController.swift */; };
 		50A342C21FB8C87C00EB67A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A342C11FB8C87C00EB67A1 /* User.swift */; };
 		50D183741FA13B9B00CBC8F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D183731FA13B9B00CBC8F7 /* AppDelegate.swift */; };
 		50D183761FA13B9B00CBC8F7 /* EnterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D183751FA13B9B00CBC8F7 /* EnterViewController.swift */; };
@@ -59,7 +59,7 @@
 		50433BB31FA43F540017081A /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		50433BB41FA43F540017081A /* stat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stat.png; sourceTree = "<group>"; };
 		506D4FEC1FD0CC13008F473B /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
-		506D4FF01FD0CDDA008F473B /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatViewController.swift; path = ../StatViewController.swift; sourceTree = "<group>"; };
+		506D4FF21FD0D097008F473B /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
 		50A342C11FB8C87C00EB67A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		50D183701FA13B9B00CBC8F7 /* diss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = diss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D183731FA13B9B00CBC8F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,7 +148,6 @@
 		50D183721FA13B9B00CBC8F7 /* diss */ = {
 			isa = PBXGroup;
 			children = (
-				506D4FF01FD0CDDA008F473B /* StatViewController.swift */,
 				5016100E1FA75777000C72F3 /* diss.entitlements */,
 				50D183971FA158C300CBC8F7 /* logo2.gif */,
 				50433BB21FA43F540017081A /* map.png */,
@@ -173,6 +172,7 @@
 				5016100C1FA755D1000C72F3 /* FacebookManager.swift */,
 				50A342C11FB8C87C00EB67A1 /* User.swift */,
 				501F10F01FB8FA4B00195CA5 /* MapViewController.swift */,
+				506D4FF21FD0D097008F473B /* StatViewController.swift */,
 			);
 			path = diss;
 			sourceTree = "<group>";
@@ -432,7 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				506D4FF11FD0CDDA008F473B /* StatViewController.swift in Sources */,
+				506D4FF31FD0D097008F473B /* StatViewController.swift in Sources */,
 				50D183761FA13B9B00CBC8F7 /* EnterViewController.swift in Sources */,
 				50433BB01FA43A210017081A /* MenuViewController.swift in Sources */,
 				50D183A31FA2AE4100CBC8F7 /* DLRadioButton.m in Sources */,
