@@ -12,6 +12,8 @@ import Alamofire
 import SwiftyJSON
 var USID:String = ""
 var FBflag:Bool = false
+var ENTERflag:Bool = false
+
 
 class EnterViewController: UIViewController, UITextFieldDelegate {
     
@@ -20,7 +22,7 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
    var loginSuccess = false
     
     
-    let URL_USER_LOGIN = "http://ksssq.online/v1/login.php";
+    let URL_USER_LOGIN = "http://62.109.0.179:3000/login";
     
     let defaultValues = UserDefaults.standard
 
@@ -32,33 +34,26 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var textFieldName: UITextField!
     
-    
     @IBAction func loginButton(_ sender: Any) {
         let parameters: Parameters=[
-            "Login":textFieldName.text!,
-            "Password":textFieldPassword.text!
+            "username":textFieldName.text!,
+            "password":textFieldPassword.text!
         ]
-        
-        ////
+        USID = textFieldName.text!
         
         //making a post request
-        Alamofire.request(URL_USER_LOGIN, method: .post, parameters: parameters).responseJSON
+        Alamofire.request(URL_USER_LOGIN, method: .post, parameters: parameters).responseString
             {
-                response in
+                responseString in
                 //printing response
-                print(response)
+                print(responseString.result.value!)
                 
-                //getting the json value from the server
-                if let result = response.result.value {
-                    let jsonData = result as! NSDictionary
-                    
-                    //if there is no error
-                    if(!(jsonData.value(forKey: "error") as! Bool)){
-                        self.performSegue(withIdentifier: "GoAfterLoginSegue", sender: self )
-                    }else{
-                        //error message in case of invalid credential
-                        self.DisplayMyAlertMassege(userMassege: "Пользователя с такими данными не существует! Повторите попытку.");
-                    }
+                if (responseString.result.value == "user not found"){
+                   //error message in case of invalid credential
+                   self.DisplayMyAlertMassege(userMassege: "Пользователя с такими данными не существует! Повторите попытку.");
+                }else{
+                    ENTERflag = true
+                    self.performSegue(withIdentifier: "GoAfterLoginSegue", sender: self )
                 }
         }
     }

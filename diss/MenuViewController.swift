@@ -14,7 +14,8 @@ class MenuViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func systemButton(_ sender: Any) {
     }
-    let URL_USER_FBREGISTER = "http://ksssq.online/v1/register.php";
+    let URL_USER_FBREGISTER = "http://62.109.0.179:3000/addNewPerson";
+    let URL_USER_LOGIN = "http://62.109.0.179:3000/login";
     var usage:String = ""
     
     
@@ -27,8 +28,6 @@ class MenuViewController: UIViewController, UITextFieldDelegate {
         
     self.navigationController?.navigationBar.barStyle = UIBarStyle.blackTranslucent
         
-        let ranID = uslogname + String(arc4random_uniform(100000) + 1)
-        USID = ranID
         
         if (FBflag == true){
             let aletController = UIAlertController(title: "Внимание!", message: "Введите ваш возраст", preferredStyle: UIAlertControllerStyle.alert);
@@ -36,27 +35,39 @@ class MenuViewController: UIViewController, UITextFieldDelegate {
                 let text = aletController.textFields?.first?.text
                 self.usage = text!
                 print(text ?? "nil text")
-                
                 let parameters: Parameters=[
-                    "UserID":ranID,
-                    "Login":uslogname,
-                    "Password":usid,
-                    "Age":self.usage,
-                    "Sex":usgen,
+                    "username":uslogname,
+                    "password":usid,
+                    "age":self.usage,
+                    "sex":usgen,
+                    "direction_of_work":"none",
                     ]
-                
-                Alamofire.request(self.URL_USER_FBREGISTER, method: .post, parameters: parameters).responseJSON
+                Alamofire.request(self.URL_USER_FBREGISTER, method: .post, parameters: parameters).responseString
                     {
-                        response in
+                        responseString in
                         //printing response
-                        print(response)
+                        print(responseString)
                 }
             }
-            
             aletController.addTextField(configurationHandler: nil)
             aletController.addAction(action)
             self.present(aletController, animated: true, completion: nil)
+            
     }
+        
+        if (ENTERflag == false && (FBflag == true || FBflag == false) && REGflag == false){
+        let param: Parameters=[
+            "username":uslogname,
+            "password":usid,
+            ]
+            USID = uslogname
+        Alamofire.request(self.URL_USER_LOGIN, method: .post, parameters: param).responseString
+            {
+                response in
+                //printing response
+                print(response)
+        }
+        }
 
 }
 }

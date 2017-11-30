@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+var REGflag:Bool = false
+
 class RegistrViewController: UIViewController, UITextFieldDelegate {
     
     
@@ -16,7 +18,8 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
     
     let datePicker = UIDatePicker()
     // URL
-    let URL_USER_REGISTER = "http://ksssq.online/v1/register.php";
+    let URL_USER_REGISTER = "http://62.109.0.179:3000/addNewPerson";
+    let URL_USER_LOGIN = "http://62.109.0.179:3000/login";
 
     func createDatePicker() {
         
@@ -59,9 +62,12 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
     @IBAction func maleButton(_ sender: Any) {
         sex = "male"
     }
+    
     @IBOutlet weak var textFieldName: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var textFieldYesPassword: UITextField!
+    @IBOutlet weak var textFieldProfession: UITextField!
+    
     var activTextField : UITextField!
     
     override func viewDidLoad() {
@@ -71,6 +77,7 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
         self.textFieldPassword.delegate = self
         self.textFieldName.delegate = self
         self.textFieldYesPassword.delegate = self
+        self.textFieldProfession.delegate = self
         
     }
     
@@ -85,18 +92,19 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
         textFieldName.resignFirstResponder()
         textFieldPassword.resignFirstResponder()
         textFieldYesPassword.resignFirstResponder()
+        textFieldProfession.resignFirstResponder()
         return (true)
     }
-    
     
     @IBAction func registerButton(_ sender: Any) {
         
         let UserName = textFieldName.text;
         let UserPassword = textFieldPassword.text;
         let YesPassword = textFieldYesPassword.text;
+        let UserProfession = textFieldProfession.text;
         
         // проверка на пустые ячейки
-        if((UserName?.isEmpty)! || (UserPassword?.isEmpty)! || (YesPassword?.isEmpty)! || (datePickerTxt.text?.isEmpty)!){
+        if((UserName?.isEmpty)! || (UserPassword?.isEmpty)! || (UserProfession?.isEmpty)! || (YesPassword?.isEmpty)! || (datePickerTxt.text?.isEmpty)!){
             // выводим сообщение
             DisplayMyAlertMassege(userMassege: "Не все поля заполнены!", flag: false);
             return;
@@ -109,44 +117,44 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
             return;
         }
         
-        let ranID = textFieldName.text! + String(arc4random_uniform(100000) + 1)
-        USID = ranID
-        
+        // P A R A M E T E R S
         //creating parameters for the post request
         let parameters: Parameters=[
-            "UserID":ranID,
-            "Login":textFieldName.text!,
-            "Password":textFieldPassword.text!,
-            "Age":String(age),
-            "Sex":sex,
+            "username":textFieldName.text!,
+            "password":textFieldPassword.text!,
+            "age":String(age),
+            "sex":sex,
+            "direction_of_work":textFieldProfession.text!,
         ]
         
+        let param: Parameters=[
+            "username":textFieldName.text!,
+            "password":textFieldPassword.text!,
+            ]
+        
         //Sending http post request
-        Alamofire.request(URL_USER_REGISTER, method: .post, parameters: parameters).responseJSON
+        Alamofire.request(URL_USER_REGISTER, method: .post, parameters: parameters).responseString
             {
-                response in
+                responseString in
                 //printing response
-                print(response)
-
-                //получаем json значение с сервера
-                if let result = response.result.value {
-                    
-                    //конвертируем как NSDictionary
-                    let jsonData = result as! NSDictionary
-                    let mes = jsonData.value(forKey: "message") as! String?
-                    //if (mes == "User created successfully"){
-                      //  self.DisplayMyAlertMassege(userMassege: "Вы успешно зарегистрированы в системе!", flag: true);
-                    if (mes == "Some error occurred"){
-                        self.DisplayMyAlertMassege(userMassege: "Ошибка! Повторите попытку.", flag: false);
-                    } else {
-                        if (mes == "User already exist"){
-                            self.DisplayMyAlertMassege(userMassege: "Пользователь с такими данными уже существует! Повторите попытку.", flag: false);
-                        } else {
-                                self.DisplayMyAlertMassege(userMassege: "Вы успешно зарегистрированы в системе!", flag: true);
-                        }
-                    }
-                    
+                print(responseString)
+                
+                if (responseString.result.value == "Такое имя пользователя уже существует!"){
+                    //error message in case of invalid credential
+                    self.DisplayMyAlertMassege(userMassege: "Пользователь с такими данными уже существует! Повторите попытку.", flag: false);
+                } else {
+                    REGflag = true
+                    self.DisplayMyAlertMassege(userMassege: "Вы успешно зарегистрированы в системе!", flag: true);
                 }
+                
+                Alamofire.request(self.URL_USER_LOGIN, method: .post, parameters: param).responseString
+                    {
+                        response in
+                        //printing response
+                        print(response)
+                        
+                }
+                USID = self.textFieldName.text!
         }
     }
     
@@ -164,9 +172,4 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
         myAlert.addAction(okAction);
         self.present(myAlert, animated:true, completion: nil);
     }
-    
-    
-    
-    
-    
 }
