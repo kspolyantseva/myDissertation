@@ -81,13 +81,12 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    // убрать клавиатуру, когда тапаем вне клавиатуры
+    //убрать клавиатуру, когда тапаем вне клавиатуры
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
-    //
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textFieldName.resignFirstResponder()
         textFieldPassword.resignFirstResponder()
