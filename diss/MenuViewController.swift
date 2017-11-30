@@ -16,6 +16,7 @@ class MenuViewController: UIViewController, UITextFieldDelegate {
     }
     let URL_USER_FBREGISTER = "http://62.109.0.179:3000/addNewPerson";
     let URL_USER_LOGIN = "http://62.109.0.179:3000/login";
+    
     var usage:String = ""
     
     
@@ -54,6 +55,7 @@ class MenuViewController: UIViewController, UITextFieldDelegate {
             self.present(aletController, animated: true, completion: nil)
             
     }
+        
         
         if (ENTERflag == false && (FBflag == true || FBflag == false) && REGflag == false){
         let param: Parameters=[
