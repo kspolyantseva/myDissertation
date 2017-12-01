@@ -611,7 +611,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Выбор пользователя" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r8v-Si-E0k">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Выбор пользователя" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r8v-Si-E0k">
                                 <rect key="frame" x="16" y="155" width="220" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8ae-Sl-23f"/>
@@ -620,6 +620,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fv4-6r-1e4" id="z2z-ud-e3a"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvt-eB-PaC">
                                 <rect key="frame" x="254" y="155" width="105" height="30"/>
@@ -628,13 +631,16 @@
                                     <constraint firstAttribute="height" constant="30" id="ylw-DP-T9c"/>
                                 </constraints>
                                 <state key="normal" title="Выбрать"/>
+                                <connections>
+                                    <action selector="usersButton:" destination="fv4-6r-1e4" eventType="touchUpInside" id="zmV-Ua-j9M"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1E-QZ-1Bl">
                                 <rect key="frame" x="16" y="193" width="220" height="162"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="Mim-Wc-D0a"/>
-                                    <constraint firstAttribute="height" constant="162" id="NkJ-BL-3fn"/>
-                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="fv4-6r-1e4" id="L4j-Ob-tjZ"/>
+                                    <outlet property="delegate" destination="fv4-6r-1e4" id="bcc-hu-pnu"/>
+                                </connections>
                             </pickerView>
                             <textField hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Выбор трека" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vgo-Aq-SF7">
                                 <rect key="frame" x="16" y="363" width="220" height="30"/>
@@ -654,6 +660,7 @@
                                 </constraints>
                                 <state key="normal" title="Выбрать"/>
                                 <connections>
+                                    <action selector="tracksButton:" destination="fv4-6r-1e4" eventType="touchUpInside" id="4n7-Ie-arj"/>
                                     <segue destination="BnK-ne-auA" kind="show" id="XLB-5j-wkA"/>
                                 </connections>
                             </button>
@@ -698,6 +705,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FOn-8Y-LIu"/>
                     </view>
+                    <connections>
+                        <outlet property="tracksButton" destination="8N6-Bf-bX0" id="gjp-Tp-p8r"/>
+                        <outlet property="tracksPicker" destination="bYJ-Iy-9mb" id="C9S-80-a3l"/>
+                        <outlet property="tracksTextView" destination="Vgo-Aq-SF7" id="adm-nf-dav"/>
+                        <outlet property="usersPicker" destination="j1E-QZ-1Bl" id="dH5-QL-fcv"/>
+                        <outlet property="usersTextView" destination="r8v-Si-E0k" id="9BM-8w-8Kg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hv-rk-ZN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -763,6 +777,6 @@
         <image name="stat.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hwW-l9-I5N"/>
+        <segue reference="CqK-lH-h0R"/>
     </inferredMetricsTieBreakers>
 </document>
