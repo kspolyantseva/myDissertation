@@ -2,6 +2,7 @@ import UIKit
 import Alamofire
 import FBSDKLoginKit
 import SwiftyJSON
+var values: [AnyObject] = []
 
 class MenuViewController: UIViewController, UITextFieldDelegate {
     
@@ -69,6 +70,18 @@ class MenuViewController: UIViewController, UITextFieldDelegate {
                 //printing response
                 print(response)
         }
+        }
+        if (USID == "admin"){
+            let URL_GET_USERS = "http://62.109.0.179:3000/users"
+            // запрос юзеров
+            Alamofire.request(URL_GET_USERS, method: .get, parameters: [:]).responseJSON
+                {
+                    response in
+                    //printing response
+                    print(response)
+                    values = response.result.value as! [AnyObject]
+                    print(values)
+            }
         }
 
 }
