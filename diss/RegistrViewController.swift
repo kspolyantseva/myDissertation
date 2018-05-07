@@ -18,8 +18,8 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
     
     let datePicker = UIDatePicker()
     // URL
-    let URL_USER_REGISTER = "http://62.109.0.179:3000/addNewPerson";
-    let URL_USER_LOGIN = "http://62.109.0.179:3000/login";
+    let URL_USER_REGISTER = "http://82.146.61.227:3000/addNewPerson";
+    let URL_USER_LOGIN = "http://82.146.61.227:3000/login";
 
     func createDatePicker() {
         

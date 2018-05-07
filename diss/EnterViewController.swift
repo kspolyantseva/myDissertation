@@ -22,7 +22,7 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
    var loginSuccess = false
     
     
-    let URL_USER_LOGIN = "http://62.109.0.179:3000/login";
+    let URL_USER_LOGIN = "http://82.146.61.227:3000/login";
     
     let defaultValues = UserDefaults.standard
 
@@ -47,7 +47,7 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
                 responseString in
                 //printing response
                 print(responseString.result.value!)
-                
+
                 if (responseString.result.value == "user not found"){
                    //error message in case of invalid credential
                    self.DisplayMyAlertMassege(userMassege: "Пользователя с такими данными не существует! Повторите попытку.");

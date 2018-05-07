@@ -20,7 +20,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var latLable: UILabel!
     @IBOutlet weak var longLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    let URL_GET_TRACK = "http://62.109.0.179:3000";
+    let URL_GET_TRACK = "http://82.146.61.227:3000";
     ////
     let MY_URL_ACC = "http://ksssq.online/v1/addCoord.php";
     let locationManager = CLLocationManager()
@@ -83,19 +83,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
                 let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2000, 2000)
                 mapView.setRegion(coordinateRegion, animated: true)
-                latLable.isEnabled = true
-                longLabel.isEnabled = true
-                speedLable.isEnabled = true
+                //latLable.isEnabled = true
+                //longLabel.isEnabled = true
+                //speedLable.isEnabled = true
             }
             countLM = countLM + 1
-            latLable.text = String(location.coordinate.latitude)
-            longLabel.text = String(location.coordinate.longitude)
-            if location.speed > 0{
-                speedLable.text = String(Double(round(100*location.speed * 3.6)/100))
-            }else{
-                speedLable.text = "0"
-            }
-            print(location.coordinate)
+            //latLable.text = String(location.coordinate.latitude)
+            //longLabel.text = String(location.coordinate.longitude)
+            //if location.speed > 0{
+               // speedLable.text = String(Double(round(100*location.speed * 3.6)/100))
+            //}else{
+              //  speedLable.text = "0"
+            //}
+            //print(location.coordinate)
             
             let today = NSDate()
             let dateFormatter = DateFormatter()
@@ -125,26 +125,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     
                     
                     
-                    if ((self.chX > 2) || (self.chY > 2) || (self.chZ > 2)){
+                   // if ((self.chX > 2) || (self.chY > 2) || (self.chZ > 2)){
                         
                         //creating parameters for the post request
-                        let parameters: Parameters=[
-                            "latitude":String(location.coordinate.latitude),
-                            "longitude":String(location.coordinate.longitude),
-                            "changeX":String(self.chX),
-                            "changeY":String(self.chY),
-                            "changeZ":String(self.chZ),
-                            "user":USID,
-                            "date":String(string),
-                            ]
+                        //let parameters: Parameters=[
+                           // "latitude":String(location.coordinate.latitude),
+                           // "longitude":String(location.coordinate.longitude),
+                           // "changeX":String(self.chX),
+                           // "changeY":String(self.chY),
+                           // "changeZ":String(self.chZ),
+                           // "user":USID,
+                           // "date":String(string),
+                          //  ]
                         
-                        Alamofire.request(self.MY_URL_ACC, method: .post, parameters: parameters).responseJSON
-                            {
-                                response in
-                                //printing response
-                                print(response)
-                        }
-                    }
+                        //Alamofire.request(self.MY_URL_ACC, method: .post, parameters: parameters).responseJSON
+                      //      {
+                    //            response in
+                                // printing response
+                  //              print(response)
+                //        }
+              //      }
                     
                     self.preX = self.X
                     self.preY = self.Y
@@ -152,12 +152,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     self.countFl = self.countFl + 1
 
                     
-                    print(myData)
-                    if (self.chX > 3) {
-                        self.view.backgroundColor = UIColor.red
-                        print("DANGEROUS!")
-                        self.view.backgroundColor = UIColor.white
-                    }
+                   // print(myData)
+                   // if (self.chX > 3) {
+                     //   self.view.backgroundColor = UIColor.red
+                    //    print("DANGEROUS!")
+                  //      self.view.backgroundColor = UIColor.white
+                //    }
                 }
             }
             
