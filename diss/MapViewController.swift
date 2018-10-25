@@ -99,8 +99,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             let today = NSDate()
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM-dd-yyyy hh:mm:ss a"
-            let string = dateFormatter.string(from: today as Date)
+            dateFormatter.dateFormat = "MM-dd-yyyy hh:mm:ss"
+            var string = dateFormatter.string(from: today as Date)
+            string = string + " PM"
             print(string)
             
             ///////////////ACCCCCC
