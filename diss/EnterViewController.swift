@@ -22,7 +22,7 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
    var loginSuccess = false
     
     
-    let URL_USER_LOGIN = "http://82.146.61.227:3000/login";
+    let URL_USER_LOGIN = "http://ec2-18-217-225-33.us-east-2.compute.amazonaws.com:3000/login";
     
     let defaultValues = UserDefaults.standard
 

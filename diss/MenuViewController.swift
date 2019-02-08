@@ -15,8 +15,8 @@ class MenuViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func systemButton(_ sender: Any) {
     }
-    let URL_USER_FBREGISTER = "http://82.146.61.227:3000/addNewPerson";
-    let URL_USER_LOGIN = "http://82.146.61.227:3000/login";
+    let URL_USER_FBREGISTER = "http://ec2-18-217-225-33.us-east-2.compute.amazonaws.com:3000/addNewPerson";
+    let URL_USER_LOGIN = "http://ec2-18-217-225-33.us-east-2.compute.amazonaws.com:3000/login";
     
     var usage:String = ""
     
@@ -72,7 +72,7 @@ class MenuViewController: UIViewController, UITextFieldDelegate {
         }
         }
         if (USID == "admin"){
-            let URL_GET_USERS = "http://82.146.61.227:3000/users"
+            let URL_GET_USERS = "http://ec2-18-217-225-33.us-east-2.compute.amazonaws.com:3000/users"
             // запрос юзеров
             Alamofire.request(URL_GET_USERS, method: .get, parameters: [:]).responseJSON
                 {

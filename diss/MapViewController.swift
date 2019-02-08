@@ -20,7 +20,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var latLable: UILabel!
     @IBOutlet weak var longLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    let URL_GET_TRACK = "http://82.146.61.227:3000";
+    let URL_GET_TRACK = "http://ec2-18-217-225-33.us-east-2.compute.amazonaws.com:3000";
     ////
     let MY_URL_ACC = "http://ksssq.online/v1/addCoord.php";
     let locationManager = CLLocationManager()
