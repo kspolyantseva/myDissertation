@@ -17,6 +17,8 @@
 		50433BB61FA43F540017081A /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 50433BB21FA43F540017081A /* map.png */; };
 		50433BB71FA43F540017081A /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 50433BB31FA43F540017081A /* profile.png */; };
 		50433BB81FA43F540017081A /* stat.png in Resources */ = {isa = PBXBuildFile; fileRef = 50433BB41FA43F540017081A /* stat.png */; };
+		504A3465238C5710004AB879 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504A3464238C5710004AB879 /* testViewController.swift */; };
+		504A3469238C72DC004AB879 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504A3468238C72DC004AB879 /* CoreMotion.framework */; };
 		506D4FED1FD0CC13008F473B /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D4FEC1FD0CC13008F473B /* TrackViewController.swift */; };
 		506D4FF31FD0D097008F473B /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506D4FF21FD0D097008F473B /* StatViewController.swift */; };
 		50A342C21FB8C87C00EB67A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A342C11FB8C87C00EB67A1 /* User.swift */; };
@@ -58,6 +60,8 @@
 		50433BB21FA43F540017081A /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		50433BB31FA43F540017081A /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		50433BB41FA43F540017081A /* stat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stat.png; sourceTree = "<group>"; };
+		504A3464238C5710004AB879 /* testViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
+		504A3468238C72DC004AB879 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		506D4FEC1FD0CC13008F473B /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		506D4FF21FD0D097008F473B /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
 		50A342C11FB8C87C00EB67A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50433BAE1FA437A90017081A /* MapKit.framework in Frameworks */,
+				504A3469238C72DC004AB879 /* CoreMotion.framework in Frameworks */,
 				1C2068973865F25F4F3ABF85 /* Pods_diss.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +123,7 @@
 		50433BAC1FA437A90017081A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				504A3468238C72DC004AB879 /* CoreMotion.framework */,
 				50433BAD1FA437A90017081A /* MapKit.framework */,
 				DDC271E921605C73F8D259E3 /* Pods_diss.framework */,
 				16F580754526D2A16ECA166B /* Pods_dissTests.framework */,
@@ -173,6 +179,7 @@
 				50A342C11FB8C87C00EB67A1 /* User.swift */,
 				501F10F01FB8FA4B00195CA5 /* MapViewController.swift */,
 				506D4FF21FD0D097008F473B /* StatViewController.swift */,
+				504A3464238C5710004AB879 /* testViewController.swift */,
 			);
 			path = diss;
 			sourceTree = "<group>";
@@ -390,6 +397,7 @@
 				50D183A31FA2AE4100CBC8F7 /* DLRadioButton.m in Sources */,
 				50D1839F1FA2759D00CBC8F7 /* RegistrViewController.swift in Sources */,
 				506D4FED1FD0CC13008F473B /* TrackViewController.swift in Sources */,
+				504A3465238C5710004AB879 /* testViewController.swift in Sources */,
 				501F10F11FB8FA4B00195CA5 /* MapViewController.swift in Sources */,
 				50D183741FA13B9B00CBC8F7 /* AppDelegate.swift in Sources */,
 				5016100D1FA755D1000C72F3 /* FacebookManager.swift in Sources */,
@@ -553,7 +561,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S6Q6686N3F;
 				INFOPLIST_FILE = diss/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mycompany.diss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -574,7 +582,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S6Q6686N3F;
 				INFOPLIST_FILE = diss/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = mycompany.diss;
 				PRODUCT_NAME = "$(TARGET_NAME)";

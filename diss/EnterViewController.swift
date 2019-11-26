@@ -82,7 +82,7 @@ class EnterViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-// убрать клавиатуру, когда тапаем вне клавиатуры
+// убрать клавиатуру, когда тапаем вне ее
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

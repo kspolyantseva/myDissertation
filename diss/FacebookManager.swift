@@ -29,7 +29,7 @@ class FacebookManager {
                 let json = JSON(result!)
                 uslogname = json["name"].string!
                 usid = json["id"].string!
-                usgen = json["gender"].string!
+//                usgen = json["gender"].string!
                 
                 print(json)
                 

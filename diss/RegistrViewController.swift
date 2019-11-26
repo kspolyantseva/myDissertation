@@ -18,8 +18,8 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
     
     let datePicker = UIDatePicker()
     // URL
-    let URL_USER_REGISTER = "http://ec2-18-217-225-33.us-east-2.compute.amazonaws.com:3000/addNewPerson";
-    let URL_USER_LOGIN = "http://ec2-18-217-225-33.us-east-2.compute.amazonaws.com:3000/login";
+    let URL_USER_REGISTER = "http://ec2-18-191-251-174.us-east-2.compute.amazonaws.com:3000/addNewPerson";
+    let URL_USER_LOGIN = "http://ec2-18-191-251-174.us-east-2.compute.amazonaws.com:3000/login";
 
     func createDatePicker() {
         
@@ -123,7 +123,7 @@ class RegistrViewController: UIViewController, UITextFieldDelegate {
             "password":textFieldPassword.text!,
             "age":String(age),
             "sex":sex,
-            "direction_of_work":textFieldProfession.text!,
+            "driving_experience":textFieldProfession.text!,
         ]
         
         let param: Parameters=[

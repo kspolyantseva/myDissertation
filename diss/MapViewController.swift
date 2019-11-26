@@ -20,7 +20,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var latLable: UILabel!
     @IBOutlet weak var longLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    let URL_GET_TRACK = "http://ec2-18-217-225-33.us-east-2.compute.amazonaws.com:3000";
+    let URL_GET_TRACK = "http://ec2-18-191-251-174.us-east-2.compute.amazonaws.com:3000";
     ////
     let MY_URL_ACC = "http://ksssq.online/v1/addCoord.php";
     let locationManager = CLLocationManager()
@@ -33,6 +33,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var X:Double = 0
     var Y:Double = 0
     var Z:Double = 0
+    var gyrX:Double = 0
+    var gyrY:Double = 0
+    var gyrZ:Double = 0
     var countFl:Int = 0
     var chX:Double = 0
     var chY:Double = 0
@@ -126,27 +129,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     
                     
                     
-                   // if ((self.chX > 2) || (self.chY > 2) || (self.chZ > 2)){
-                        
-                        //creating parameters for the post request
-                        //let parameters: Parameters=[
-                           // "latitude":String(location.coordinate.latitude),
-                           // "longitude":String(location.coordinate.longitude),
-                           // "changeX":String(self.chX),
-                           // "changeY":String(self.chY),
-                           // "changeZ":String(self.chZ),
-                           // "user":USID,
-                           // "date":String(string),
-                          //  ]
-                        
-                        //Alamofire.request(self.MY_URL_ACC, method: .post, parameters: parameters).responseJSON
-                      //      {
-                    //            response in
-                                // printing response
-                  //              print(response)
-                //        }
-              //      }
-                    
                     self.preX = self.X
                     self.preY = self.Y
                     self.preZ = self.Z
@@ -162,8 +144,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
             }
             
-            /////////////////////////
-            
+            ///////////////////////// GYRO
+            motionManager.gyroUpdateInterval = 0.2
+            motionManager.startGyroUpdates(to: OperationQueue.current!){ (data, error) in
+                if let myDat = data{
+                
+                    //self.preX = myData.acceleration.x
+                    self.gyrX = myDat.rotationRate.x
+                    self.gyrY = myDat.rotationRate.y
+                    self.gyrZ = myDat.rotationRate.z
+
+                
+            }
+            }
             
             
             
@@ -174,10 +167,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 "latitude":location.coordinate.latitude,
                 "longitude":location.coordinate.longitude,
                 "speed":Double(round(100*location.speed * 3.6)/100),
+                "position":position,
+                "accX":self.X,
+                "accY":self.Y,
+                "accZ":self.Z,
+                "gyrX":self.gyrX,
+                "gyrY":self.gyrY,
+                "gyrZ":self.gyrZ,
+                "road":road,
+                "daytime":time,
+                "tyre":tyre,
                 "date":String(string),
                     ]
                 ]
-
+       
             Alamofire.request(urlTrackCoord, method: .post, parameters: point, encoding: JSONEncoding.default).responseString
                 {
                     responseString in
